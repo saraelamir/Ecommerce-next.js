@@ -11,14 +11,20 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [fetching, setFetching] = useState(true);
 
-  useEffect(() => {
-    if (!loading) {
-      if (!user || user.role !== 'admin') router.push('/');
-      else adminAPI.dashboard().then(setStats).catch(() => {}).finally(() => setFetching(false));
+useEffect(() => {
+  if (!loading) {
+    if (!user || user.role !== 'admin') router.push('/');
+    else {
+      adminAPI.dashboard()
+        .then(res => {
+          console.log('DASHBOARD DATA:', res); // 👈 مهم
+          setStats(res);
+        })
+        .catch(() => {})
+        .finally(() => setFetching(false));
     }
-  }, [user, loading]);
-
-  if (loading || fetching) return <div className="text-center py-5"><div className="spinner-border" style={{ color: '#0d9488' }}></div></div>;
+  }
+}, [user, loading]);  if (loading || fetching) return <div className="text-center py-5"><div className="spinner-border" style={{ color: '#0d9488' }}></div></div>;
 
   const m = stats?.metrics || stats;
   const metrics = [
