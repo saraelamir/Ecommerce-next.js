@@ -1,0 +1,64 @@
+/* ── Reset & Base ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: #f8f9fc;
+  color: #1a1a2e;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+/* ── Bootstrap overrides ────────────────────────────── */
+:root {
+  --primary: #0d9488;
+  --primary-dark: #0b7a70;
+  --dark: #042f2e;
+  --card-shadow: 0 4px 20px rgba(4,47,46,0.08);
+}
+.btn-primary { background: var(--primary); border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background: var(--primary) !important; }
+.card { border: none; box-shadow: var(--card-shadow); border-radius: 12px; }
+
+/* ── Google Login btn ───────────────────────────────── */
+.google-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; background: #fff; border: 2px solid #e0e0e0;
+  border-radius: 10px; padding: 10px 20px; width: 100%;
+  cursor: pointer; font-weight: 600; color: #444;
+  transition: all 0.2s; font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+}
+.google-btn:hover { border-color: #0d9488; background: #f8fffe; }
+.google-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ── Utilities ──────────────────────────────────────── */
+.star-filled { color: #ffc107; }
+.star-empty  { color: #dee2e6; }
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Responsive images ──────────────────────────────── */
+img { max-width: 100%; height: auto; }
+
+/* ── Shopzone dropdown ──────────────────────────────── */
+.shopzone-dd {
+  border: none !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+  border-radius: 14px !important;
+  padding: 8px !important;
+  min-width: 200px !important;
+}
+.shopzone-dd .dropdown-item {
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  font-size: 0.88rem !important;
+  transition: background 0.15s !important;
+}
+.shopzone-dd .dropdown-item:hover { background: #f0fdfa !important; }

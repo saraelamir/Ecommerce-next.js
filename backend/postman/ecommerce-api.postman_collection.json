@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "Ecommerce Platform API",
+    "_postman_id": "8c49b97a-4d1e-45a9-9783-239f46390001",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        { "name": "Register", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }, "body": { "mode": "raw", "raw": "{\n  \"name\": \"John\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"customer\"\n}" } } },
+        { "name": "Login", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }, "body": { "mode": "raw", "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}" } } },
+        { "name": "Google Login", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/auth/google", "host": ["{{baseUrl}}"], "path": ["auth", "google"] }, "body": { "mode": "raw", "raw": "{\n  \"email\": \"google@example.com\",\n  \"name\": \"Google User\",\n  \"googleId\": \"google-id-1\"\n}" } } }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        { "name": "Get Products", "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/products?search=phone&page=1&limit=10", "host": ["{{baseUrl}}"], "path": ["products"], "query": [{ "key": "search", "value": "phone" }, { "key": "page", "value": "1" }, { "key": "limit", "value": "10" }] } } },
+        { "name": "Create Product", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/products", "host": ["{{baseUrl}}"], "path": ["products"] }, "body": { "mode": "raw", "raw": "{\n  \"name\": \"iPhone 16\",\n  \"description\": \"Flagship smartphone\",\n  \"price\": 999,\n  \"images\": [\"https://example.com/iphone.jpg\"],\n  \"category\": \"{{categoryId}}\",\n  \"stockQuantity\": 20\n}" } } }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        { "name": "Get Cart", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{baseUrl}}/cart", "host": ["{{baseUrl}}"], "path": ["cart"] } } },
+        { "name": "Add To Cart", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/cart", "host": ["{{baseUrl}}"], "path": ["cart"] }, "body": { "mode": "raw", "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2\n}" } } }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        { "name": "Create Order", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] }, "body": { "mode": "raw", "raw": "{\n  \"shippingAddress\": \"Nasr City, Cairo\",\n  \"paymentMethod\": \"cod\",\n  \"couponCode\": \"WELCOME10\"\n}" } } },
+        { "name": "My Orders", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{baseUrl}}/orders/mine", "host": ["{{baseUrl}}"], "path": ["orders", "mine"] } } }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        { "name": "Dashboard", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }], "url": { "raw": "{{baseUrl}}/admin/dashboard", "host": ["{{baseUrl}}"], "path": ["admin", "dashboard"] } } },
+        { "name": "Users", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }], "url": { "raw": "{{baseUrl}}/admin/users", "host": ["{{baseUrl}}"], "path": ["admin", "users"] } } }
+      ]
+    },
+    {
+      "name": "Seller",
+      "item": [
+        { "name": "Seller Dashboard", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{sellerToken}}" }], "url": { "raw": "{{baseUrl}}/seller/dashboard", "host": ["{{baseUrl}}"], "path": ["seller", "dashboard"] } } },
+        { "name": "Seller Products", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{sellerToken}}" }], "url": { "raw": "{{baseUrl}}/seller/products", "host": ["{{baseUrl}}"], "path": ["seller", "products"] } } }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "token", "value": "" },
+    { "key": "adminToken", "value": "" },
+    { "key": "sellerToken", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "categoryId", "value": "" }
+  ]
+}

@@ -1,0 +1,211 @@
+/* ── Navbar ─────────────────────────────────────────── */
+.nav {
+  background: #042f2e;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.brandIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.95rem;
+}
+.brandText {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* Search */
+.searchWrap {
+  flex: 1;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.searchForm {
+  display: flex;
+  align-items: center;
+  background: #064e3b;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.searchForm.focused { border-color: none; }
+.searchIcon {
+  padding: 0 10px;
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 7px 0;
+  font-size: 0.82rem;
+  color: #e1e8f3;
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+  min-width: 0;
+}
+.searchInput::placeholder { color: #e1e8f3; }
+.searchBtn {
+  background: none;
+
+  border: none;
+  padding: 0 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: color 0.2s;
+}
+.searchBtn:hover { color: #0d9488; }
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  position: relative;
+}
+.iconBtn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.cartBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  background: #2dd4bf;
+  color: #042f2e;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navLink {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.navLink:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.loginBtn {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 7px 16px;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.loginBtn:hover { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.4); }
+.registerBtn {
+  background: #0d9488;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.registerBtn:hover { background: #0b7a70; color: #fff; }
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0d9488, #2dd4bf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Dropdown overrides */
+:global(.shopzone-dd) {
+  border: none !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+  border-radius: 14px !important;
+  padding: 8px !important;
+  min-width: 200px !important;
+}
+:global(.shopzone-dd .dropdown-item) {
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  font-size: 0.88rem !important;
+  transition: background 0.15s !important;
+}
+:global(.shopzone-dd .dropdown-item:hover) { background: #f0fdfa !important; }
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .searchWrap { display: none; }
+  .brandText  { font-size: 1.1rem; }
+  .inner      { gap: 10px; }
+}
+@media (max-width: 480px) {
+  .inner    { padding: 0 12px; height: 58px; }
+  .loginBtn, .registerBtn { padding: 6px 10px; font-size: 0.78rem; }
+}
