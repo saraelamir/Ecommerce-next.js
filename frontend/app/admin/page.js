@@ -17,7 +17,7 @@ useEffect(() => {
     else {
       adminAPI.dashboard()
         .then(res => {
-          console.log('DASHBOARD DATA:', res); // 👈 مهم
+          console.log('DASHBOARD DATA:', res);
           setStats(res);
         })
         .catch(() => {})

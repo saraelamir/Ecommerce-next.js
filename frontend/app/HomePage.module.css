@@ -1,8 +1,3 @@
-/* ══════════════════════════════════════════════════════
-   HomePage.module.css  — fully responsive
-   ══════════════════════════════════════════════════════ */
-
-/* ── Animations ─────────────────────────────────────── */
 @keyframes fadeUp  { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 @keyframes wordIn  { 0%,100%{opacity:0;transform:translateY(10px)} 12%,82%{opacity:1;transform:translateY(0)} }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
@@ -16,7 +11,6 @@
 
 .wordSwap { animation: wordIn 2.8s ease infinite; display: inline-block; }
 
-/* ── Hero ────────────────────────────────────────────── */
 .hero {
   background: linear-gradient(150deg, #0f766e 0%, #0d9488 40%, #2dd4bf 100%);
   min-height: 100vh;

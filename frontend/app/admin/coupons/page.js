@@ -41,8 +41,8 @@ export default function AdminCouponsPage() {
     try {
       const data = await couponsAPI.create({
         code: form.code.toUpperCase().trim(),
-        discountPercent: Number(form.discount), // ✔ مهم
-        expiresAt: form.expiresAt,            // ✔ مهم
+        discountPercent: Number(form.discount), 
+        expiresAt: form.expiresAt,            
       });
 
       setCoupons(c => [...c, data.coupon || data]);

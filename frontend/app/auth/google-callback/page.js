@@ -2,19 +2,25 @@
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext'; 
 
 export default function GoogleCallbackPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  const { setUser } = useAuth();
+
   useEffect(() => {
     if (status === 'loading') return;
 
     if (session?.backendToken) {
-      // Save the backend JWT token
       localStorage.setItem('token', session.backendToken);
-      // Redirect based on role
+      localStorage.setItem('user', JSON.stringify(session.backendUser));
+
+      setUser(session.backendUser);
+
       const role = session.backendUser?.role;
+
       if (role === 'admin') router.push('/admin');
       else if (role === 'seller') router.push('/seller');
       else router.push('/');

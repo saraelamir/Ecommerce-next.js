@@ -10,10 +10,14 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       authAPI.me()
         .then(data => setUser(data.user || data))
-        .catch(() => localStorage.removeItem('token'))
+        .catch(() => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        })
         .finally(() => setLoading(false));
     } else {
       setLoading(false);
@@ -22,26 +26,44 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     const data = await authAPI.login({ email, password });
+
     localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user || data));
+
     setUser(data.user || data);
     return data;
   };
 
   const register = async (name, email, password, role = 'customer') => {
     const data = await authAPI.register({ name, email, password, role });
+
     localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user || data));
+
     setUser(data.user || data);
     return data;
   };
 
   const logout = async () => {
     try { await authAPI.logout(); } catch {}
+
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser, 
+        loading,
+        login,
+        register,
+        logout
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
