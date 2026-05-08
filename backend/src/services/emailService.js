@@ -1,26 +1,27 @@
 const nodemailer = require("nodemailer");
 
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
 const sendEmail = async ({ to, subject, text }) => {
-  if (!process.env.SMTP_HOST) {
-    console.log("[Mock Email]", { to, subject, text });
-    return;
+  try {
+    await transporter.sendMail({
+      from: `"ShopZone" <${process.env.EMAIL}>`,
+      to,
+      subject,
+      text,
+    });
+
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error(" Error sending email:", error);
+    throw error;
   }
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT || 2525),
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
-  await transporter.sendMail({
-    from: "no-reply@ecommerce.com",
-    to,
-    subject,
-    text,
-  });
 };
 
 module.exports = { sendEmail };

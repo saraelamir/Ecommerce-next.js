@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/register", [body("name").notEmpty(), body("email").isEmail(), body("password").isLength({ min: 6 })], validate, controller.register);
 router.post("/login", [body("email").isEmail(), body("password").notEmpty()], validate, controller.login);
+router.get("/verify-email", controller.verifyEmail);
 router.post("/google", controller.googleLogin);
 router.post("/logout", controller.logout);
 router.get("/me", protect, controller.me);

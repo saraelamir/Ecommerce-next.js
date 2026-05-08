@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
     googleId: { type: String },
     walletBalance: { type: Number, default: 0 },
     wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+    isEmailVerified: { type: Boolean, default: false },
+    emailVerificationToken: { type: String, default: null },
+    emailVerificationExpires: { type: Date, default: null },
   },
   { timestamps: true }
 );

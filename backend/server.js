@@ -8,7 +8,8 @@ const errorHandler = require("./src/middleware/errorHandler");
 
 dotenv.config();
 connectDB();
-
+console.log("BACKEND_URL =", process.env.BACKEND_URL);
+console.log("FRONTEND_URL =", process.env.FRONTEND_URL);
 const app = express();
 
 app.use(
@@ -16,8 +17,7 @@ app.use(
     origin: process.env.CLIENT_URL,
     credentials: true,
   })
-);
-app.use(express.json({ limit: "2mb" }));
+);app.use(express.json({ limit: "2mb" }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 

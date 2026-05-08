@@ -34,16 +34,11 @@ export function AuthProvider({ children }) {
     return data;
   };
 
-  const register = async (name, email, password, role = 'customer') => {
+const register = async (name, email, password, role = 'customer') => {
     const data = await authAPI.register({ name, email, password, role });
-
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user || data));
-
-    setUser(data.user || data);
+    
     return data;
   };
-
   const logout = async () => {
     try { await authAPI.logout(); } catch {}
 

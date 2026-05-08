@@ -1,28 +1,64 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import GoogleLoginButton from '@/components/auth/GoogleLoginButton';
 
 export default function RegisterPage() {
   const { register } = useAuth();
-  const router = useRouter();
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'customer' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [registered, setRegistered] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(''); setLoading(true);
     try {
       await register(form.name, form.email, form.password, form.role);
-      router.push('/');
+      setRegistered(true);
     } catch (err) {
       setError(err.message || 'Registration failed');
     }
     setLoading(false);
   };
+
+  if (registered) {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center"
+        style={{ background: 'linear-gradient(135deg, #042f2e 0%, #0f2a1a 100%)' }}>
+        <div className="col-md-5 col-lg-4 px-3">
+          <div className="text-center mb-4">
+            <Link href="/" className="text-decoration-none">
+              <h3 className="text-white fw-bold">
+                <i className="fas fa-bolt me-2" style={{ color: '#0d9488' }}></i>ShopZone
+              </h3>
+            </Link>
+          </div>
+          <div className="card p-4 text-center" style={{ borderRadius: 20 }}>
+            <div className="mb-3">
+              <div className="d-inline-flex align-items-center justify-content-center rounded-circle"
+                style={{ width: 72, height: 72, background: '#d1fae5' }}>
+                <i className="fas fa-envelope fa-2x" style={{ color: '#059669' }}></i>
+              </div>
+            </div>
+            <h5 className="fw-bold">Check your email! 📧</h5>
+            <p className="text-muted" style={{ fontSize: '0.95rem' }}>
+              We sent a verification link to
+            </p>
+            <p className="fw-semibold mb-3" style={{ color: '#0d9488' }}>{form.email}</p>
+            <p className="text-muted small mb-4">
+              Click the link in the email to activate your account. The link expires in 24 hours.
+            </p>
+            <Link href="/auth/login" className="btn w-100 py-2"
+              style={{ background: '#0d9488', color: '#fff', borderRadius: 10, fontWeight: 600 }}>
+              <i className="fas fa-sign-in-alt me-2"></i>Go to Login
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-vh-100 d-flex align-items-center py-4" style={{ background: 'linear-gradient(135deg, #042f2e 0%, #0f2a1a 100%)' }}>
@@ -40,7 +76,6 @@ export default function RegisterPage() {
 
               {error && <div className="alert alert-danger py-2"><i className="fas fa-exclamation-circle me-2"></i>{error}</div>}
 
-              {/* Google Register */}
               <div className="mb-3">
                 <GoogleLoginButton onError={setError} />
               </div>

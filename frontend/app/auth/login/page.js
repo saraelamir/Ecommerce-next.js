@@ -1,17 +1,26 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import GoogleLoginButton from '@/components/auth/GoogleLoginButton';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const [verified, setVerified] = useState(false);
+
+  useEffect(() => {
+    const email = searchParams.get('email');
+    const isVerified = searchParams.get('verified');
+    if (email) setForm(f => ({ ...f, email }));
+    if (isVerified) setVerified(true);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,9 +51,14 @@ export default function LoginPage() {
               <h4 className="fw-bold mb-1">Welcome back!</h4>
               <p className="text-muted mb-4">Sign in to your account</p>
 
+              {verified && (
+                <div className="alert py-2 mb-3" style={{ background: '#d1fae5', color: '#065f46', borderRadius: 10 }}>
+                  <i className="fas fa-check-circle me-2"></i>Account verified! Please sign in.
+                </div>
+              )}
+
               {error && <div className="alert alert-danger py-2"><i className="fas fa-exclamation-circle me-2"></i>{error}</div>}
 
-              {/* Google Login */}
               <div className="mb-3">
                 <GoogleLoginButton onError={setError} />
               </div>
