@@ -1,0 +1,164 @@
+.page {
+  background: #f8fafc;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+   background: #042f2e;
+  color: #aaa;
+}
+
+.glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  filter: blur(80px);
+  top: -100px;
+  left: -100px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.title span {
+  color: #042f2e;
+}
+
+.subtitle {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* TEXT */
+.textBox h2 {
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #042f2e;
+}
+
+.textBox p {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+/* STATS CARDS */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card i {
+  font-size: 22px;
+  color: #0d9488;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-weight: 800;
+}
+
+/* VALUES */
+.sectionTitle {
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.valueCard {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.valueCard:hover {
+  transform: translateY(-6px);
+}
+
+.iconBox {
+  width: 55px;
+  height: 55px;
+  background: #d1fae5;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: #0d9488;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 70px 0;
+}
+
+.btn {
+  background: #0d9488;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* ANIMATIONS */
+.fadeUp {
+  animation: fadeUp 0.8s ease both;
+}
+
+.fadeUpDelay {
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .valuesGrid { grid-template-columns: 1fr 1fr; }
+}

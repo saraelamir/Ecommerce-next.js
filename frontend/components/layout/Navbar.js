@@ -61,6 +61,14 @@ export default function Navbar() {
             Products
           </Link>
 
+          {/* ✅ About & Help */}
+          <Link href="/about" className={`${styles.navLink} d-none d-md-block`}>
+            About
+          </Link>
+          <Link href="/legal" className={`${styles.navLink} d-none d-md-block`}>
+            Help
+          </Link>
+
           {user ? (
             <>
               <Link href="/cart" className={styles.iconBtn}>

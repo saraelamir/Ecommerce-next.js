@@ -40,6 +40,18 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
+          <div className={styles.col}>
+            <h6>Company</h6>
+            <ul>
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/faq">FAQ</Link></li>
+              <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/terms">Terms of Service</Link></li>
+            </ul>
+          </div>
+
           {/* Newsletter */}
           <div className={styles.newsletter}>
             <h6 style={{ color: '#fff', fontWeight: 600, marginBottom: '0.75rem' }}>Newsletter</h6>
@@ -53,7 +65,10 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          © 2025 ShopZone. All rights reserved.
+          © 2025 ShopZone. All rights reserved. &nbsp;·&nbsp;
+          <Link href="/privacy" style={{ color: '#9ca3af' }}>Privacy</Link>
+          &nbsp;·&nbsp;
+          <Link href="/terms" style={{ color: '#9ca3af' }}>Terms</Link>
         </div>
       </div>
     </footer>

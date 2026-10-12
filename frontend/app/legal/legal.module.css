@@ -1,0 +1,129 @@
+.page {
+  background: #f8f9fc;
+  min-height: 100vh;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  padding: 90px 0;
+  overflow: hidden;
+  background: #042f2e;
+  text-align: center;
+}
+
+/* glow effects */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: #0d9488;
+  opacity: 0.08;
+  border-radius: 50%;
+  top: -100px;
+  left: -120px;
+  filter: blur(50px);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: #10b981;
+  opacity: 0.06;
+  border-radius: 50%;
+  bottom: -100px;
+  right: -120px;
+  filter: blur(60px);
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  background: #0d9488;
+  opacity: 0.05;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+/* HERO TEXT */
+.hero h1 {
+   color: #aaa
+ !important;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+.hero p {
+  color: rgba(255, 255, 255, 0.75)!important;
+  font-size: 1rem;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.sectionTitle {
+  font-weight: 800;
+  margin: 35px 0 15px;
+  color: #0f172a;
+}
+
+/* ================= ACCORDION ================= */
+
+.item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.header {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* arrow */
+.arrow {
+  font-size: 22px;
+  color: #0d9488;
+  transition: 0.3s ease;
+  transform: rotate(0deg);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+/* body animation */
+.body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  color: #6b7280;
+  transition: all 0.35s ease;
+}
+
+.show {
+  max-height: 200px;
+  padding-bottom: 16px;
+}
